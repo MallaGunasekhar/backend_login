@@ -3,14 +3,16 @@ const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const app = express();
 
-const corsOptions = {
-    origin: 'http://localhost:3000',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-  };
-  
-  app.use(cors(corsOptions));
+// const corsOptions = {
+//     origin: 'http://localhost:3000',
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//     credentials: true
+//   };
+  app.use(cors({
+    origin: ['https://googlemapass.vercel.app'] // Your frontend URL
+  }));
+
 app.use(express.json());
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
